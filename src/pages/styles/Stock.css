@@ -1,0 +1,69 @@
+/* styles/Stock.css */
+
+.full {
+  font-family: Arial, sans-serif; /* Use a common font */
+}
+
+.content {
+  padding: 20px; /* Add padding for content */
+}
+
+ul {
+  list-style-type: none; /* Remove bullet points from the list */
+  padding: 0;
+}
+
+.list {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px; /* Add margin between list items */
+}
+
+.list-header {
+  font-weight: bold;
+}
+
+.editable-field {
+  width: 150px;
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.button-add-stock, .button-decrease-stock {
+  background-color: #35a912;
+  margin-left: 10px; /* Add space between buttons */
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+  color: white;
+}
+
+.button-decrease-stock {
+  background-color: rgb(213, 104, 104);
+}
+
+.button-add-stock:hover {
+  background-color: #337635; /* Green background color on hover */
+}
+
+.button-decrease-stock:hover {
+  background-color: rgb(163, 24, 24);
+}
+
+.add-product-button {
+  border: none;
+  padding: 10px 20px;
+  background-color: #007bff; /* Blue background color */
+  color: white; /* White text color */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.add-product-button:hover {
+  background-color: #0056b3; /* Darker blue background color on hover */
+}
+

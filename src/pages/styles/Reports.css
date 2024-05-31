@@ -1,0 +1,37 @@
+/* Reports.css */
+
+.full {
+    font-family: Arial, sans-serif;
+  }
+  
+  .content {
+    padding: 20px;
+  }
+  
+  .report-dropdown {
+    margin-bottom: 20px;
+  }
+  
+  .report-dropdown select {
+    padding: 8px;
+    font-size: 16px;
+  }
+  
+  .report-form {
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+  
+  .report-form h3 {
+    margin-top: 0;
+  }
+  
+  .report-form input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  
+  

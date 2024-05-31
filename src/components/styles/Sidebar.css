@@ -1,0 +1,25 @@
+.sidebar {
+    display: flex;
+    flex-direction: column;
+    min-height: calc(100vh - 100px);
+    background-color: #f5f5f5; /* Background color for the sidebar */
+    position: fixed;
+  }
+  
+  .sidebar button {
+    flex: 1; /* Make the buttons expand to fill the available height */
+    background-color: #fff; /* Button background color */
+    border: 1px solid #ccc; /* Add a border for better separation */
+    border-radius: 4px; /* Rounded corners for buttons */
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+  
+    /* Center text vertically and horizontally */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .sidebar button:hover {
+    background-color: #e0e0e0; /* Change background color on hover */
+  }

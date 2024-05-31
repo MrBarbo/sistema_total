@@ -1,0 +1,40 @@
+.full {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .box {
+    display: flex;
+    flex: 1;
+  }
+  
+  .sidebar-box {
+    width: 200px;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .patient-group {
+    margin-bottom: 20px;
+  }
+  
+  .consultas-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+  }
+  
+  .consultas-table th, .consultas-table td {
+    border: 1px solid #ccc;
+    padding: 8px;
+    text-align: left;
+  }
+  
+  .consultas-table th {
+    background-color: #f2f2f2;
+  }
+  

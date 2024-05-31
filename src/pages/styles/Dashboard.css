@@ -1,0 +1,21 @@
+.full {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.box {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
+}
+
+.sidebar-box { 
+    width:15%;
+    height: 100%;
+}
+
+.content { 
+    width: 100%;
+    text-align: center;
+}

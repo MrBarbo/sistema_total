@@ -1,0 +1,27 @@
+/* styles/StockCreateModal.css */
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center the modal */
+  width: 17%;
+  height: 1%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #fff;
+}
+
+.modal-content {
+  background: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 0px;
+  width: 100%; /* Set width to 100% for responsiveness */
+}
+
+.button-save, .button-close {
+  margin-top: 10px;
+  padding: 10px 20px;
+  cursor: pointer;
+}
