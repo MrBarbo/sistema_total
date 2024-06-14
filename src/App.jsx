@@ -10,6 +10,7 @@ import MedAttention from '../src/pages/MedAttention'
 import Reports from '../src/pages/Reports'
 import AccountCreation from '../src/pages/AccountCreation'
 import PatientFollowup from './pages/PatientFollowup'
+import Dereva from './pages/Dereva'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
         <Route path="/pacientes" element={<PatientFollowup />} />
         <Route path="/reportes" element={<Reports />} />
         <Route path="/creacion" element={<AccountCreation />} />
+        <Route path="/dereva" element={<Dereva />} />
       </Routes>
     </BrowserRouter>
       

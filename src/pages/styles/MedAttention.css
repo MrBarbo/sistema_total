@@ -1,48 +1,71 @@
-/* MedAttention.css */
+/* styles/MedAttention.css */
 
 .full {
-    font-family: Arial, sans-serif;
-  }
-  
-  .content {
-    padding: 20px;
-  }
-  
-  .med-attention-form {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-  }
-  
-  .form-section {
-    border-bottom: 1px solid #ccc;
-    padding-bottom: 20px;
-    margin-bottom: 20px;
-  }
-  
-  .form-section h3 {
-    margin-top: 0;
-  }
-  
-  .form-section input,
-  .form-section textarea {
-    width: 100%;
-    padding: 8px;
-    font-size: 16px;
-  }
-  
-  .submit-button {
-    border: none;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    cursor: pointer;
-    border-radius: 4px;
-    transition: background-color 0.3s, color 0.3s;
-  }
-  
-  .submit-button:hover {
-    background-color: #0056b3;
-  }
-  
-  
+  font-family: Arial, sans-serif;
+}
+
+.content {
+  padding: 20px;
+}
+
+.med-attention-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-section {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+}
+
+.form-section h3 {
+  margin-top: 0;
+}
+
+.form-section input,
+.form-section textarea,
+.form-section select {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.medication-group {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 10px;
+  position: relative;
+}
+
+.medication-divider {
+  margin: 20px 0;
+  border: 0;
+  height: 1px;
+  background: #ccc;
+}
+
+.submit-button,
+.add-medication-button {
+  border: none;
+  padding: 10px 20px;
+  background-color: #007bff;
+  margin-bottom: 5px;
+  color: white;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.submit-button:hover,
+.add-medication-button:hover {
+  background-color: #0056b3;
+}
+
+.add-medication-button {
+  align-self: flex-start;
+  margin-top: 10px;
+}

@@ -1,0 +1,67 @@
+.full {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+  }
+  
+  .box {
+    display: flex;
+    flex: 1;
+  }
+  
+  .sidebar-box {
+    width: 200px;
+  }
+  
+  .content {
+    flex: 1;
+    padding: 20px;
+  }
+  
+  .add-patient-button,
+  .save-button,
+  .alta-button,
+  .observacion-button {
+    margin: 10px 0;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .add-patient-button:hover,
+  .save-button:hover,
+  .alta-button:hover,
+  .observacion-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .form {
+    margin-bottom: 20px;
+  }
+  
+  .form input,
+  .form select{
+    display: block;
+    margin-bottom: 10px;
+    padding: 8px;
+    width: 100%;
+  }
+  
+  .patient-record {
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .patient-record h3 {
+    margin-top: 0;
+  }
+  
+  .patient-record button {
+    margin-right: 10px;
+  }
+  

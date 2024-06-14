@@ -9,7 +9,7 @@ const AccountCreation = () => {
     username: '',
     password: '',
     rol: 'Director General',
-    lugar: 'Neuquen'
+    lugar: 'Central'
   });
 
   // Event handler for input changes
@@ -109,8 +109,12 @@ const AccountCreation = () => {
                 onChange={handleInputChange}
                 required
               >
-                <option value="Neuquen">Neuquen</option>
-                <option value="Tierra del Fuego">Tierra del Fuego</option>
+                <option value="Central">Central</option>
+                <option value="Rio Cullen">Rio Cullen</option>
+                <option value="Cañadon Alfa">Cañadon Alfa</option>
+                <option value="Aguada San Roque">Aguada San Roque</option>
+                <option value="Rincon de la Ceniza">Rincon de la Ceniza</option>
+                <option value="Aguada Pichana">Aguada Pichana</option>
               </select>
             </div>
             <button type="submit" className="submit-button">Crear Cuenta</button>

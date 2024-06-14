@@ -3,6 +3,8 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Nav-bar';
 import Sidebar from '../components/Sidebar';
+import Catering from './subpages/catering';
+import Permed from './subpages/permanenciamed';
 import './styles/Reports.css';
 
 const Reports = () => {
@@ -35,7 +37,7 @@ const Reports = () => {
       date: '',
       catering: {
         date: '',
-        location: '',
+        location: 'Rio Cullen',
         doctor: ''
       },
       derivations: {
@@ -58,15 +60,7 @@ const Reports = () => {
   };
 
   // Function to handle input change in catering form fields
-  const handleCateringInputChange = (field, value) => {
-    setFormData({
-      ...formData,
-      catering: {
-        ...formData.catering,
-        [field]: value
-      }
-    });
-  };
+  
 
   // Function to handle input change in derivations form fields
   const handleDerivationsInputChange = (field, value) => {
@@ -94,32 +88,14 @@ const Reports = () => {
             <select value={selectedReport} onChange={(e) => handleReportSelection(e.target.value)}>
               <option value=''>Seleccione Tipo de Reporte</option>
               <option value='catering'>Control del Catering</option>
-              <option value='derivations'>Derivaciones/Evacuaciones</option>
-              <option value='controls'>Controles</option>
+              <option value='Permanencia del Personal'>Permanencia del Personal</option>
             </select>
           </div>
           {selectedReport === 'catering' && (
-            <div className='report-form'>
-              <h3>Control del Catering</h3>
-              <input
-                type='date'
-                value={formData.catering.date}
-                onChange={(e) => handleCateringInputChange('date', e.target.value)}
-                placeholder='Fecha'
-              />
-              <input
-                type='text'
-                value={formData.catering.location}
-                onChange={(e) => handleCateringInputChange('location', e.target.value)}
-                placeholder='Sede'
-              />
-              <input
-                type='text'
-                value={formData.catering.doctor}
-                onChange={(e) => handleCateringInputChange('doctor', e.target.value)}
-                placeholder='Médico'
-              />
-            </div>
+            <Catering />
+          )}
+          {selectedReport === 'Permanencia del Personal' && (
+            <Permed />
           )}
           {selectedReport === 'derivations' && (
             <div className='report-form'>

@@ -132,7 +132,7 @@ const Tasks = () => {
               <span>Responsable</span>
               <span>Fecha de inicio</span>
               <span>Fecha de fin</span>
-              <span>Estatus</span>
+              <span>Estado</span>
             </li>
             {tasksData.map((task) => (
               <li className='list' key={task.id}>

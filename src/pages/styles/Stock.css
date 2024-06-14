@@ -67,3 +67,18 @@ ul {
   background-color: #0056b3; /* Darker blue background color on hover */
 }
 
+.download-pdf-button {
+  border: none;
+  padding: 10px 20px;
+  margin-left:3px;
+  background-color: #e30606; /* Blue background color */
+  color: white; /* White text color */
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+}
+
+.download-pdf-button:hover {
+  background-color: #a00606; /* Darker blue background color on hover */
+}
+

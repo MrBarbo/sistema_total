@@ -1,0 +1,49 @@
+.report-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.report-form h3 {
+  margin-top: 0;
+}
+
+.report-form input,
+.report-form select {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  font-size: 16px;
+}
+
+.submit-button {
+  width: 100px;
+  padding: 10px;
+  margin-top: 5px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.submit-download-button {
+  width: 100px;
+  padding: 10px;
+  margin-top: 5px;
+  background-color: #dc0303;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.submit-download-button:hover {
+  background-color: #860303;
+}

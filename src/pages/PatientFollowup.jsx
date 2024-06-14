@@ -10,6 +10,16 @@ const PatientFollowup = () => {
     fetchConsultas();
   }, []);
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return date.toLocaleDateString('en-GB', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      timeZone: 'UTC'
+    });
+  };
+
   const fetchConsultas = async () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_DIR}/consultas`);
@@ -54,23 +64,40 @@ const PatientFollowup = () => {
                   <tr>
                     <th>Fecha</th>
                     <th>Patología</th>
-                    <th>Observaciones</th>
-                    <th>Nombre del Medicamento</th>
-                    <th>Droga</th>
-                    <th>Acción</th>
-                    <th>Cantidad</th>
+                    <th>Empresa</th>
+                    <th>Medicamentos</th>
                   </tr>
                 </thead>
                 <tbody>
                   {groupedConsultas[patientName].map((consulta) => (
                     <tr key={consulta.id}>
-                      <td>{consulta.date}</td>
+                      <td>{formatDate(consulta.date)}</td>
                       <td>{consulta.pathology}</td>
-                      <td>{consulta.observations}</td>
-                      <td>{consulta.medicationName}</td>
-                      <td>{consulta.drug}</td>
-                      <td>{consulta.action}</td>
-                      <td>{consulta.quantity}</td>
+                      <td>{consulta.company}</td>
+                      <td>
+                        {consulta.Medications && consulta.Medications.length > 0 ? (
+                          <table className='medications-table'>
+                            <thead>
+                              <tr>
+                                <th>Nombre del Medicamento</th>
+                                <th>Droga</th>
+                                <th>Cantidad</th>
+                              </tr>
+                            </thead>
+                            <tbody>
+                              {consulta.Medications.map((med) => (
+                                <tr key={med.id}>
+                                  <td>{med.medicationName}</td>
+                                  <td>{med.drug}</td>
+                                  <td>{med.quantity}</td>
+                                </tr>
+                              ))}
+                            </tbody>
+                          </table>
+                        ) : (
+                          'No se recetaron medicaciones'
+                        )}
+                      </td>
                     </tr>
                   ))}
                 </tbody>

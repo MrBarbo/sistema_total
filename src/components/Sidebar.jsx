@@ -8,6 +8,7 @@ const Sidebar = ({ role }) => {
   let showTasks = false;
   let showAttentionReports = false;
   let showPatientTracking = false;
+  let showDerevaTracking =false;
   let showReports = false;
   let showAccountCreation = false;
 
@@ -17,6 +18,7 @@ const Sidebar = ({ role }) => {
       showTasks=true
       showAttentionReports=true
       showPatientTracking=true
+      showDerevaTracking =true
       showReports=true
       showAccountCreation=true
     case 'Coordinador':
@@ -56,12 +58,17 @@ const Sidebar = ({ role }) => {
     navigate('/pacientes')
   };
 
+  const handleDerevaClick = () => {
+    navigate('/dereva')
+  };
+
   return (
     <div className="sidebar">
       {showStock && <button onClick={handleStockButtonClick}>Stock</button>}
       {showTasks && <button onClick={handleTasksButtonClick}>Tareas</button>}
       {showAttentionReports && <button onClick={handleMedAttentionClick}>Reportes de atención</button>}
       {showPatientTracking && <button onClick={handlePatientClick}>Seguimiento de pacientes</button>}
+      {showPatientTracking && <button onClick={handleDerevaClick}>Derivados/Evacuados</button>}
       {showReports && <button onClick={handleReportsClick}>Reportes</button>}
       {showAccountCreation && <button onClick={handleAccountCreation}>Creación de cuentas</button>}
     </div>
