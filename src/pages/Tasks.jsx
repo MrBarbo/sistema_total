@@ -4,6 +4,7 @@ import Sidebar from '../components/Sidebar';
 import TaskEditModal from '../components/TaskEditModal';
 import TaskCreateModal from '../components/TaskCreateModal';
 import './styles/Tasks.css';
+import Cookies from 'js-cookie';
 
 const Tasks = () => {
   const [tasksData, setTasksData] = useState([]);
@@ -13,10 +14,11 @@ const Tasks = () => {
   const [activeTaskId, setActiveTaskId] = useState(null);
 
   useEffect(() => {
-    fetchTasks();
+    const savedLocation = Cookies.get('location');
+    fetchTasks(savedLocation);
   }, []);
 
-  const fetchTasks = async () => {
+  const fetchTasks = async (savedLocation) => {
     try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_DIR}/tareas`);
       if (!response.ok) {

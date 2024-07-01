@@ -40,8 +40,7 @@ const Home = () => {
       })
       .then((data) => {
         const rol = data.session.idToken.payload['custom:rol'];
-        console.log(rol)
-        navigate('/dashboard', { state: { role: rol } });
+        navigate('/sede', { state: { role: rol } });
       })
       .catch((error) => {
         setErrorMessage(error.message);

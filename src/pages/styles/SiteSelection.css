@@ -1,0 +1,64 @@
+@keyframes fadeIn {
+0% { opacity: 0; transform: scale(0.9); }
+100% { opacity: 1; transform: scale(1); }
+}
+
+.animate-fade-in {
+animation: fadeIn 0.5s ease-out;
+}
+
+.site-selection-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+color: #333;
+font-family: 'Arial', sans-serif;
+padding-top: 100px;
+}
+
+.form-container {
+background-color: rgba(255, 255, 255, 0.9);
+padding: 40px;
+border-radius: 12px;
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+width: 400px;
+text-align: center;
+}
+
+.site-selection-form h2 {
+margin-bottom: 20px;
+font-size: 24px;
+}
+
+.site-selection-form label {
+font-size: 18px;
+font-weight: bold;
+margin-bottom: 10px;
+}
+
+.site-selection-form select {
+width: 100%;
+padding: 12px;
+margin-bottom: 20px;
+border: 1px solid #ddd;
+border-radius: 6px;
+box-sizing: border-box;
+font-size: 16px;
+}
+
+.submit-button {
+padding: 12px 24px;
+background-color: #007bff;
+color: white;
+border: none;
+border-radius: 6px;
+cursor: pointer;
+transition: background-color 0.3s, transform 0.2s;
+font-size: 16px;
+}
+
+.submit-button:hover {
+background-color: #0056b3;
+transform: scale(1.05);
+}

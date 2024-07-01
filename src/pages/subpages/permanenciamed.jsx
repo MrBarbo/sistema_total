@@ -19,7 +19,6 @@ const Permed = () => {
 
 
     const handleSubmit = (e) => {
-      console.log('data'+JSON.stringify(formData))
       e.preventDefault();
       fetch(`${import.meta.env.VITE_BACKEND_DIR}/reportes/permed`, {
         method: 'POST',
