@@ -15,7 +15,7 @@ const Navbar = ({ isLoggedIn }) => {
   return (
     <nav className='navbar'>
       <div className="logo-box">
-        <img src="src\assets\images\total-logo.png" alt="Logo" className='logo' />
+        <img src="total-logo.png" alt="Logo" className='logo' />
       </div>
       <div className="buttons">
         {isLoggedIn ? (

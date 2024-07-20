@@ -33,6 +33,7 @@ const Tasks = () => {
 
   const handleCreateTask = async (newTask) => {
     try {
+      newTask.Sede = Cookies.get('location');
       const response = await fetch(`${import.meta.env.VITE_BACKEND_DIR}/tareas`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
