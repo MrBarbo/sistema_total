@@ -9,6 +9,7 @@ const MedAttention = () => {
     date: '',
     pathology: 'Respiratorio',
     company: 'Total',
+    customCompany: '',
     medications: []
   });
 
@@ -29,8 +30,9 @@ const MedAttention = () => {
       setFormData({
         patientName: '',
         date: '',
-        pathology: '',
-        company: '',
+        pathology: 'Respiratorio',
+        company: 'Total',
+        customCompany: '',
         medications: []
       });
     } catch (error) {
@@ -84,7 +86,7 @@ const MedAttention = () => {
                 value={formData.patientName}
                 onChange={(e) => handleInputChange('patientName', e.target.value)}
               />
-              <label htmlFor="pathology">Fecha</label>
+              <label htmlFor="date">Fecha</label>
               <input
                 type='date'
                 value={formData.date}
@@ -131,7 +133,17 @@ const MedAttention = () => {
                 <option value="HUINOIL S.A.">HUINOIL S.A.</option>
                 <option value="L.G.">L.G.</option>
                 <option value="POLISER">POLISER</option>
+                <option value="OTHER">Ingrese nombre de empresa...</option>
               </select>
+              {formData.company === 'OTHER' && (
+                <input
+                  type='text'
+                  placeholder='Nombre de la Empresa'
+                  value={formData.customCompany}
+                  onChange={(e) => handleInputChange('customCompany', e.target.value)}
+                  required
+                />
+              )}
             </div>
             <div className='form-section'>
               <h3>Medicación Recetada</h3>

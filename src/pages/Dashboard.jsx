@@ -14,7 +14,6 @@ const Dashboard = () => {
           />
         </div>
         <div className='content'>
-          <h1>DASHBOARD</h1>
           <p></p>
         </div>
       </div>
