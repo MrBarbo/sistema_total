@@ -1,17 +1,32 @@
 import React, { useState, useEffect } from 'react';
+import {
+  Box,
+  Container,
+  Typography,
+  Button,
+  Card,
+  CardContent,
+  CardActions,
+  Menu,
+  MenuItem,
+  CircularProgress,
+  Grid
+} from '@mui/material';
 import Navbar from '../components/Nav-bar';
 import Sidebar from '../components/Sidebar';
 import TaskEditModal from '../components/TaskEditModal';
 import TaskCreateModal from '../components/TaskCreateModal';
-import './styles/Tasks.css';
 import Cookies from 'js-cookie';
+import './styles/Tasks.css';
 
 const Tasks = () => {
   const [tasksData, setTasksData] = useState([]);
   const [selectedTask, setSelectedTask] = useState(null);
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
+  const [anchorEl, setAnchorEl] = useState(null);
   const [activeTaskId, setActiveTaskId] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const savedLocation = Cookies.get('location');
@@ -19,6 +34,7 @@ const Tasks = () => {
   }, []);
 
   const fetchTasks = async (savedLocation) => {
+    setLoading(true);
     try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_DIR}/tareas`);
       if (!response.ok) {
@@ -29,6 +45,7 @@ const Tasks = () => {
     } catch (error) {
       console.error('Error fetching tasks:', error);
     }
+    setLoading(false);
   };
 
   const handleCreateTask = async (newTask) => {
@@ -104,19 +121,27 @@ const Tasks = () => {
     setIsCreateModalOpen(false);
   };
 
-  const handleDropdownToggle = (taskId) => {
-    setActiveTaskId(activeTaskId === taskId ? null : taskId);
+  const handleDropdownToggle = (event, taskId) => {
+    setAnchorEl(event.currentTarget);
+    setActiveTaskId(taskId);
+  };
+
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    setActiveTaskId(null);
   };
 
   const handleEditClick = (task) => {
     openEditModal(task);
-    setActiveTaskId(null); // Close the dropdown menu
+    handleMenuClose();
   };
 
   const handleDeleteClick = (taskId) => {
-    handleDeleteTask(taskId); // Call the delete task function
-    setActiveTaskId(null); // Close the dropdown after deleting
+    handleDeleteTask(taskId);
+    handleMenuClose();
   };
+
+  const isLoading = loading;
 
   return (
     <div className='full'>
@@ -125,38 +150,67 @@ const Tasks = () => {
         <div className='sidebar-box'>
           <Sidebar role={'Administrador'} />
         </div>
-        <div className='content'>
-          <h2>Tareas</h2>
-          <ul className='task-list'>
-            <li className='list-header'>
-              <span>Acciones</span>
-              <span>Tarea</span>
-              <span>Descripción</span>
-              <span>Responsable</span>
-              <span>Fecha de inicio</span>
-              <span>Fecha de fin</span>
-              <span>Estado</span>
-            </li>
-            {tasksData.map((task) => (
-              <li className='list' key={task.id}>
-                <div className='dropdown-container'>
-                  <div className='dropdown-toggle' onClick={() => handleDropdownToggle(task.id)}>...</div>
-                  {activeTaskId === task.id && (
-                    <div className='dropdown-content'>
-                      <div className='dropdown-option' onClick={() => handleEditClick(task)}>Editar</div>
-                      <div className='dropdown-option' onClick={() => handleDeleteClick(task.id)}>Eliminar</div>
-                    </div>
-                  )}
-                </div>
-                <span>{task.Tarea}</span>
-                <span>{task.Descripcion}</span>
-                <span>{task.Responsable}</span>
-                <span>{new Date(task.FechaDeInicio).toLocaleDateString()}</span>
-                <span>{new Date(task.FechaDeFin).toLocaleDateString()}</span>
-                <span>{task.Estatus}</span>
-              </li>
-            ))}
-          </ul>
+        <Container className='content'>
+          <Typography variant='h2' gutterBottom>
+            Tareas
+          </Typography>
+          {isLoading ? (
+            <CircularProgress />
+          ) : (
+            <Grid container spacing={3}>
+              {tasksData.map((task) => (
+                <Grid item xs={12} sm={6} md={4} key={task.id}>
+                  <Card className='task-card'>
+                    <CardContent>
+                      <Typography variant='h5' component='div'>
+                        {task.Tarea}
+                      </Typography>
+                      <Typography color='text.secondary'>
+                        {task.Descripcion}
+                      </Typography>
+                      <Typography variant='body2'>
+                        <strong>Responsable:</strong> {task.Responsable}
+                      </Typography>
+                      <Typography variant='body2'>
+                        <strong>Inicio:</strong> {new Date(task.FechaDeInicio).toLocaleDateString()}
+                      </Typography>
+                      <Typography variant='body2'>
+                        <strong>Fin:</strong> {new Date(task.FechaDeFin).toLocaleDateString()}
+                      </Typography>
+                      <Typography variant='body2'>
+                        <strong>Estado:</strong> {task.Estatus}
+                      </Typography>
+                    </CardContent>
+                    <CardActions>
+                      <Button
+                        size='small'
+                        color='primary'
+                        onClick={(event) => handleDropdownToggle(event, task.id)}
+                      >
+                        Opciones
+                      </Button>
+                    </CardActions>
+                  </Card>
+                </Grid>
+              ))}
+            </Grid>
+          )}
+          <Button
+            variant='contained'
+            color='primary'
+            onClick={openCreateModal}
+            className='create-task-button'
+          >
+            Crear Tarea
+          </Button>
+          <Menu
+            anchorEl={anchorEl}
+            open={Boolean(anchorEl)}
+            onClose={handleMenuClose}
+          >
+            <MenuItem onClick={() => handleEditClick(selectedTask)}>Editar</MenuItem>
+            <MenuItem onClick={() => handleDeleteClick(activeTaskId)}>Eliminar</MenuItem>
+          </Menu>
           {isEditModalOpen && (
             <TaskEditModal
               task={selectedTask}
@@ -170,12 +224,10 @@ const Tasks = () => {
               onClose={closeCreateModal}
             />
           )}
-          <button className='add-task-button' onClick={openCreateModal}>Crear Tarea</button>
-        </div>
+        </Container>
       </div>
     </div>
   );
-
 };
 
 export default Tasks;
