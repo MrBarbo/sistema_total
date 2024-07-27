@@ -4,6 +4,7 @@ import Sidebar from '../components/Sidebar';
 import StockEditModal from '../components/StockEditModal';
 import StockCreateModal from '../components/StockCreateModal';
 import './styles/Stock.css';
+import Cookies from 'js-cookie';
 
 const StockPage = () => {
   const [stockData, setStockData] = useState([]);
@@ -46,7 +47,7 @@ const StockPage = () => {
       if (newStock.Vencimiento) {
         newStock.Vencimiento = new Date(newStock.Vencimiento).toISOString();
       }
-
+      newStock.Sede= Cookies.get('location');
       const response = await fetch(`${import.meta.env.VITE_BACKEND_DIR}/stock`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

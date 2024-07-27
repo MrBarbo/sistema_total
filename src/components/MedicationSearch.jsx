@@ -1,53 +1,41 @@
-// MedicationSearch.jsx
 import React, { useState, useEffect } from 'react';
 import { TextField, Autocomplete } from '@mui/material';
 
 const MedicationSearch = ({ index, medication, onMedicationChange }) => {
-  const [searchResults, setSearchResults] = useState([]);
-  const [searchQuery, setSearchQuery] = useState('');
+  const [allMedications, setAllMedications] = useState([]);
 
   useEffect(() => {
     const fetchMedications = async () => {
       try {
-        const response = await fetch(`${import.meta.env.VITE_BACKEND_DIR}/stock?query=${searchQuery}`);
+        const response = await fetch(`${import.meta.env.VITE_BACKEND_DIR}/stock`);
         if (!response.ok) {
           throw new Error('Network response was not ok');
         }
         const data = await response.json();
-        setSearchResults(data);
+        setAllMedications(data);
       } catch (error) {
         console.error('Error fetching medications:', error);
       }
     };
 
-    if (searchQuery) {
-      fetchMedications();
-    } else {
-      setSearchResults([]);
-    }
-  }, [searchQuery]);
+    fetchMedications();
+  }, []);
 
-  const handleSelectMedication = (event, newValue) => {
-    if (newValue) {
-      onMedicationChange(index, 'medicationName', newValue.medicationName);
-      onMedicationChange(index, 'drug', newValue.drug);
-      onMedicationChange(index, 'quantity', newValue.quantity);
+  const handleSelectMedication = (event, value) => {
+    if (value) {
+      onMedicationChange(index, 'medicationName', value.Producto);
+      onMedicationChange(index, 'drug', value.Droga);
+      onMedicationChange(index, 'quantity', value.Cantidad);
     }
   };
 
   return (
     <Autocomplete
-      options={searchResults}
-      getOptionLabel={(option) => option.medicationName}
-      onInputChange={(event, newInputValue) => setSearchQuery(newInputValue)}
+      options={allMedications}
+      getOptionLabel={(option) => `${option.Producto} - ${option.Droga}`}
       onChange={handleSelectMedication}
       renderInput={(params) => (
-        <TextField
-          {...params}
-          label="Buscar Medicamento"
-          variant="outlined"
-          fullWidth
-        />
+        <TextField {...params} label="Medicamento" variant="outlined" />
       )}
     />
   );

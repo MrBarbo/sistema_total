@@ -27,6 +27,7 @@ const MedAttention = () => {
       }
       const result = await response.json();
       console.log('Consulta guardada:', result);
+      // Reset form fields after submission
       setFormData({
         patientName: '',
         date: '',
@@ -153,6 +154,12 @@ const MedAttention = () => {
                     index={index}
                     medication={medication}
                     onMedicationChange={handleMedicationChange}
+                  />
+                  <input
+                    type='number'
+                    placeholder='Cantidad'
+                    value={medication.quantity}
+                    onChange={(e) => handleMedicationChange(index, 'quantity', e.target.value)}
                   />
                   {index < formData.medications.length - 1 && <hr className='medication-divider' />}
                 </div>
