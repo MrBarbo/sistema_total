@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navbar from '../components/Nav-bar';
 import Sidebar from '../components/Sidebar';
+import MedicationSearch from '../components/MedicationSearch';
 import './styles/MedAttention.css';
 
 const MedAttention = () => {
@@ -26,7 +27,6 @@ const MedAttention = () => {
       }
       const result = await response.json();
       console.log('Consulta guardada:', result);
-      // Reset form fields after submission
       setFormData({
         patientName: '',
         date: '',
@@ -149,24 +149,10 @@ const MedAttention = () => {
               <h3>Medicación Recetada</h3>
               {formData.medications.map((medication, index) => (
                 <div key={index} className='medication-group'>
-                  <input
-                    type='text'
-                    placeholder='Nombre del medicamento'
-                    value={medication.medicationName}
-                    onChange={(e) => handleMedicationChange(index, 'medicationName', e.target.value)}
-                  />
-                  <input
-                    type='text'
-                    placeholder='Droga'
-                    value={medication.drug}
-                    onChange={(e) => handleMedicationChange(index, 'drug', e.target.value)}
-                  />
-
-                  <input
-                    type='number'
-                    placeholder='Cantidad'
-                    value={medication.quantity}
-                    onChange={(e) => handleMedicationChange(index, 'quantity', e.target.value)}
+                  <MedicationSearch
+                    index={index}
+                    medication={medication}
+                    onMedicationChange={handleMedicationChange}
                   />
                   {index < formData.medications.length - 1 && <hr className='medication-divider' />}
                 </div>

@@ -1,60 +1,117 @@
-import React, { useState } from 'react';
-import './styles/TaskEditModal.css';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+import { Dialog, DialogActions, DialogContent, DialogTitle, TextField, Button } from '@mui/material';
 
 const TaskEditModal = ({ task, onEditTask, onClose }) => {
-  const [editedTask, setEditedTask] = useState(task);
+  const [formData, setFormData] = useState({
+    name: '',
+    description: '',
+    responsible: '',
+    startDate: '',
+    endDate: '',
+    status: ''
+  });
 
-  const handleEdit = () => {
-    onEditTask(editedTask.id, 'name', editedTask.name);
-    onEditTask(editedTask.id, 'description', editedTask.description);
-    onEditTask(editedTask.id, 'responsible', editedTask.responsible);
-    onEditTask(editedTask.id, 'startDate', editedTask.startDate);
-    onEditTask(editedTask.id, 'endDate', editedTask.endDate);
-    onEditTask(editedTask.id, 'status', editedTask.status);
-    onClose();
+  useEffect(() => {
+    if (task) {
+      setFormData({
+        name: task.Tarea || '',
+        description: task.Descripcion || '',
+        responsible: task.Responsable || '',
+        startDate: task.FechaDeInicio ? new Date(task.FechaDeInicio).toISOString().split('T')[0] : '',
+        endDate: task.FechaDeFin ? new Date(task.FechaDeFin).toISOString().split('T')[0] : '',
+        status: task.Estatus || ''
+      });
+    }
+  }, [task]);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value
+    });
+  };
+
+  const handleSave = () => {
+    if (task) {
+      onEditTask(task.id, formData);
+    }
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal" onClick={(e) => e.stopPropagation()}>
-        <h3>Edit Task</h3>
-        <input
-          className='editable-field'
-          value={editedTask.name}
-          onChange={(e) => setEditedTask({ ...editedTask, name: e.target.value })}
+    <Dialog open={!!task} onClose={onClose}>
+      <DialogTitle>Edit Task</DialogTitle>
+      <DialogContent>
+        <TextField
+          label='Name'
+          name='name'
+          value={formData.name}
+          onChange={handleChange}
+          fullWidth
+          margin='normal'
         />
-        <input
-          className='editable-field'
-          value={editedTask.description}
-          onChange={(e) => setEditedTask({ ...editedTask, description: e.target.value })}
+        <TextField
+          label='Description'
+          name='description'
+          value={formData.description}
+          onChange={handleChange}
+          fullWidth
+          margin='normal'
         />
-        <input
-          className='editable-field'
-          value={editedTask.responsible}
-          onChange={(e) => setEditedTask({ ...editedTask, responsible: e.target.value })}
+        <TextField
+          label='Responsible'
+          name='responsible'
+          value={formData.responsible}
+          onChange={handleChange}
+          fullWidth
+          margin='normal'
         />
-        <input
-          className='editable-field'
+        <TextField
+          label='Start Date'
           type='date'
-          value={editedTask.startDate}
-          onChange={(e) => setEditedTask({ ...editedTask, startDate: e.target.value })}
+          name='startDate'
+          value={formData.startDate}
+          onChange={handleChange}
+          fullWidth
+          margin='normal'
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
-        <input
-          className='editable-field'
+        <TextField
+          label='End Date'
           type='date'
-          value={editedTask.endDate}
-          onChange={(e) => setEditedTask({ ...editedTask, endDate: e.target.value })}
+          name='endDate'
+          value={formData.endDate}
+          onChange={handleChange}
+          fullWidth
+          margin='normal'
+          InputLabelProps={{
+            shrink: true,
+          }}
         />
-        <input
-          className='editable-field'
-          value={editedTask.status}
-          onChange={(e) => setEditedTask({ ...editedTask, status: e.target.value })}
+        <TextField
+          label='Status'
+          name='status'
+          value={formData.status}
+          onChange={handleChange}
+          fullWidth
+          margin='normal'
         />
-        <button className="save-button" onClick={handleEdit}>Save</button>
-        <button className="cancel-button" onClick={onClose}>Cancel</button>
-      </div>
-    </div>
+      </DialogContent>
+      <DialogActions>
+        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={handleSave} color='primary'>Save</Button>
+      </DialogActions>
+    </Dialog>
   );
+};
+
+TaskEditModal.propTypes = {
+  task: PropTypes.object,
+  onEditTask: PropTypes.func.isRequired,
+  onClose: PropTypes.func.isRequired,
 };
 
 export default TaskEditModal;

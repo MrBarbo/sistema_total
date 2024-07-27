@@ -1,0 +1,38 @@
+/* MedicationSearch.css */
+.medication-group {
+    margin-bottom: 10px;
+  }
+  
+  .medication-divider {
+    margin: 10px 0;
+  }
+  
+  .add-medication-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .add-medication-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .submit-button {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-top: 20px;
+  }
+  
+  .submit-button:hover {
+    background-color: #218838;
+  }
+  
