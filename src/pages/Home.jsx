@@ -3,8 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Nav-bar';
 import './styles/Home.css';
 
-
-
 const Home = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -48,39 +46,37 @@ const Home = () => {
   };
 
   return (
-    <div>
+    <div className="content">
       <Navbar isLoggedIn={false} />
-      <div className='content'>
-        <h1>Login</h1>
-        <form onSubmit={handleSubmit} className='login-box'>
-          <div>
-            <label htmlFor="username">Usuario</label>
-            <input
-              className='username-input'
-              type="text"
-              id="username"
-              name="username"
-              value={username}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <div>
-            <label htmlFor="password">Contraseña</label>
-            <input
-              className='password-input'
-              type="password"
-              id="password"
-              name="password"
-              value={password}
-              onChange={handleInputChange}
-              required
-            />
-          </div>
-          <button className='submit-button' type="submit">Ingresar</button>
-          {errorMessage && <p className='error-message'>{errorMessage}</p>}
-        </form>
-      </div>
+      <h1>Login</h1>
+      <form onSubmit={handleSubmit} className="login-box">
+        <div>
+          <label htmlFor="username">Usuario</label>
+          <input
+            className="username-input"
+            type="text"
+            id="username"
+            name="username"
+            value={username}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <div>
+          <label htmlFor="password">Contraseña</label>
+          <input
+            className="password-input"
+            type="password"
+            id="password"
+            name="password"
+            value={password}
+            onChange={handleInputChange}
+            required
+          />
+        </div>
+        <button className="submit-button" type="submit">Ingresar</button>
+        {errorMessage && <p className="error-message">{errorMessage}</p>}
+      </form>
     </div>
   );
 };
