@@ -1,42 +1,99 @@
-.task-card {
-  transition: transform 0.3s, box-shadow 0.3s;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  overflow: hidden;
-  min-height: 200px; /* Agregamos una altura mínima */
+/* styles/Tasks.css */
+
+.tasks-page {
   display: flex;
-  flex-direction: column; /* Asegura que el contenido se distribuya bien */
+  height: 100vh;
+  overflow: hidden;
+}
+
+.sidebar {
+  width: 250px;
+  flex-shrink: 0;
+}
+
+.tasks-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  max-width: 1200px; /* Ajuste de ancho para mejor centrado */
+  margin: 0 auto; /* Centra horizontalmente */
+  padding-bottom: 20px;
+}
+
+.tasks-title {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+.tasks-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* Centrar las tarjetas */
+  gap: 20px;
+  width: 100%;
+}
+
+.task-grid-item {
+  display: flex;
+  flex: 1 1 30%;
+  min-width: 300px;
+  max-width: 350px; /* Evitar que sean demasiado anchas */
+}
+
+.task-card {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 280px;
+  padding: 15px;
 }
 
 .task-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
 }
 
-.task-card .MuiCardContent-root {
-  flex-grow: 1; /* Permite que el contenido crezca */
-  padding: 20px;
-  background-color: #ffffff;
-}
-
-.task-card .MuiCardActions-root {
-  background-color: #f0f0f0;
-  padding: 10px;
-  display: flex;
-  justify-content: flex-end;
-}
-
-.task-card h5 {
-  font-size: 1.2rem;
+.task-title {
   font-weight: bold;
+  font-size: 1.2rem;
   margin-bottom: 10px;
 }
 
-.task-card .MuiTypography-body2 {
-  font-size: 0.95rem;
-  margin-bottom: 5px;
+.task-actions {
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
 }
 
-.task-card .MuiTypography-body2 strong {
-  font-weight: bold;
+.create-task-button {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.create-task-button:hover {
+  background-color: #0056b3;
+}
+
+.loading-indicator {
+  color: #007bff;
 }
