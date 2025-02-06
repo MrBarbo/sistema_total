@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Nav-bar';
 import Sidebar from '../components/Sidebar';
 import StockEditModal from '../components/StockEditModal';
 import StockCreateModal from '../components/StockCreateModal';
@@ -43,11 +42,10 @@ const StockPage = () => {
 
   const handleCreateStock = async (newStock) => {
     try {
-      // Ensure the date is formatted correctly
       if (newStock.Vencimiento) {
         newStock.Vencimiento = new Date(newStock.Vencimiento).toISOString();
       }
-      newStock.Sede= Cookies.get('location');
+      newStock.Sede = Cookies.get('location');
       const response = await fetch(`${import.meta.env.VITE_BACKEND_DIR}/stock`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -58,7 +56,6 @@ const StockPage = () => {
         console.error('Error creating task:', response.statusText, errorText);
         return;
       }
-
       const createdStock = await response.json();
       setStockData([...stockData, createdStock]);
       setIsCreateModalOpen(false);
@@ -95,25 +92,16 @@ const StockPage = () => {
     try {
       const response = await fetch(`${import.meta.env.VITE_BACKEND_DIR}/stock/download/pdf`, {
         method: 'GET',
-        responseType: 'blob', // Specify the response type as blob
+        responseType: 'blob',
       });
 
-      // Create a blob object from the response
       const blob = await response.blob();
-
-      // Create a temporary URL for the blob object
       const url = window.URL.createObjectURL(blob);
-
-      // Create an anchor element to trigger the download
       const link = document.createElement('a');
       link.href = url;
-      link.setAttribute('download', 'Reporte_Stock.pdf'); // Set the download attribute
+      link.setAttribute('download', 'Reporte_Stock.pdf');
       document.body.appendChild(link);
-
-      // Trigger the click event to start the download
       link.click();
-
-      // Cleanup
       document.body.removeChild(link);
       window.URL.revokeObjectURL(url);
     } catch (error) {
@@ -141,22 +129,21 @@ const StockPage = () => {
 
   return (
     <div className='full'>
-      <Navbar isLoggedIn={true} />
       <div className='box'>
         <div className='sidebar-box'>
           <Sidebar role={'Administrador'} />
         </div>
         <div className='content'>
           <h2>Stock</h2>
+          <div className="list-header-container">
+            <span className="list-header-item">Producto</span>
+            <span className="list-header-item">Droga</span>
+            <span className="list-header-item">Acción</span>
+            <span className="list-header-item">Cantidad</span>
+            <span className="list-header-item">Agregar/Quitar</span>
+            <span className="list-header-item">Expiración</span>
+          </div>
           <ul>
-            <li className='list-header'>
-              <span>Producto</span>
-              <span>Droga</span>
-              <span>Acción</span>
-              <span>Cantidad</span>
-              <span>Expiración</span>
-              <span>Acciones</span>
-            </li>
             {stockData.map((product) => (
               <li className='list' key={product.id}>
                 <span>{product.Producto}</span>
@@ -168,7 +155,7 @@ const StockPage = () => {
                   <button className='button-decrease-stock' onClick={() => handleDecreaseQuantity(product.id)}>-</button>
                 </div>
                 <span>{new Date(product.Vencimiento).toLocaleDateString()}</span>
-                <button className='button-edit' onClick={() => openEditModal(product)}>Edit</button>
+                <button className='button-edit' onClick={() => openEditModal(product)}>Editar</button>
               </li>
             ))}
           </ul>

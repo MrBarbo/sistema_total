@@ -1,27 +1,40 @@
 /* styles/Stock.css */
 
 .full {
-  font-family: Arial, sans-serif; /* Use a common font */
+  font-family: Arial, sans-serif;
 }
 
 .content {
-  padding: 20px; /* Add padding for content */
+  padding: 20px;
+}
+
+.list-header-container {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr 1fr 1fr;
+  gap: 10px;
+  font-weight: bold;
+  margin-bottom: 15px;
+}
+
+.list-header-item {
+  text-align: center;
+  padding: 10px;
+  background-color: #1B98E0;
+  color: white;
+  border-radius: 5px;
 }
 
 ul {
-  list-style-type: none; /* Remove bullet points from the list */
+  list-style-type: none;
   padding: 0;
 }
 
 .list {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr 1fr 1fr 1fr;
+  gap: 10px;
   align-items: center;
-  margin-bottom: 10px; /* Add margin between list items */
-}
-
-.list-header {
-  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 .editable-field {
@@ -30,55 +43,95 @@ ul {
   margin-right: 10px;
 }
 
-.button-add-stock, .button-decrease-stock {
-  background-color: #35a912;
-  margin-left: 10px; /* Add space between buttons */
+.button-add-stock, .button-decrease-stock, .button-edit {
   border: none;
-  padding: 8px 16px;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: white;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
-  color: white;
+  transition: background-color 0.3s, color 0.3s;
+  text-align: center;
+}
+
+.button-add-stock:hover, .button-edit:hover, .button-decrease-stock:hover {
+  background-color: #0056b3;
 }
 
 .button-decrease-stock {
   background-color: rgb(213, 104, 104);
 }
 
-.button-add-stock:hover {
-  background-color: #337635; /* Green background color on hover */
-}
-
 .button-decrease-stock:hover {
   background-color: rgb(163, 24, 24);
 }
 
+.add-product-button, .button-edit {
+  margin-top: 15px;
+}
+
+.button-edit {
+  background-color: #ef9c0b; /* Amarillo para diferenciarlo */
+}
+
+.button-edit:hover {
+  background-color: #f4ec11; /* Amarillo más oscuro en hover */
+}
+
+/* Restablecer el estilo de Añadir Producto */
 .add-product-button {
   border: none;
   padding: 10px 20px;
-  background-color: #007bff; /* Blue background color */
-  color: white; /* White text color */
+  background-color: #007bff; /* Azul de fondo */
+  color: white;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .add-product-button:hover {
-  background-color: #0056b3; /* Darker blue background color on hover */
+  background-color: #0056b3; /* Azul más oscuro en hover */
+}
+
+/* Alineación del botón "Editar" en el centro */
+.button-edit-container {
+  display: flex;
+  justify-content: center; /* Centrar el botón */
+  margin-top: 15px; /* Añadir un margen superior si es necesario */
 }
 
 .download-pdf-button {
   border: none;
   padding: 10px 20px;
-  margin-left:3px;
-  background-color: #e30606; /* Blue background color */
-  color: white; /* White text color */
+  margin-left: 3px;
+  background-color: #e30606;
+  color: white;
   cursor: pointer;
   border-radius: 4px;
-  transition: background-color 0.3s, color 0.3s; /* Smooth transition for hover effect */
+  transition: background-color 0.3s, color 0.3s;
 }
 
 .download-pdf-button:hover {
-  background-color: #a00606; /* Darker blue background color on hover */
+  background-color: #a00606;
 }
 
+.stock-quantity-buttons {
+  display: flex;
+  justify-content: center; /* Centrado de los botones */
+}
+
+.stock-quantity-buttons button {
+  margin: 0 5px; /* Espaciado entre botones */
+}
+
+.list-header-container,
+.list {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 10px;
+}
+
+.list-header-item, .list span {
+  text-align: center;
+  padding: 10px;
+}

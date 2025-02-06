@@ -1,25 +1,79 @@
-.sidebar {
-    display: flex;
-    flex-direction: column;
-    min-height: calc(100vh - 100px);
-    background-color: #f5f5f5; /* Background color for the sidebar */
-    position: fixed;
-  }
-  
-  .sidebar button {
-    flex: 1; /* Make the buttons expand to fill the available height */
-    background-color: #fff; /* Button background color */
-    border: 1px solid #ccc; /* Add a border for better separation */
-    border-radius: 4px; /* Rounded corners for buttons */
-    cursor: pointer;
-    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
-  
-    /* Center text vertically and horizontally */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .sidebar button:hover {
-    background-color: #e0e0e0; /* Change background color on hover */
-  }
+/* Sidebar Container */
+.sidebar-container {
+  flex: 0 0 300px; /* Sidebar de 300px de ancho */
+  background-color: #1B98E0; /* Azul oscuro */
+  box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3); /* Sombra elegante */
+  border-radius: 12px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+}
+
+/* Logo en el Sidebar */
+.sidebar-logo {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  background-color: #ffffff; /* Azul más oscuro para contraste */
+  padding: 15px;
+  border-radius: 1px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+}
+
+.sidebar-logo img {
+  width: 180px;  /* Aumentamos el tamaño del logo */
+  max-width: 80%; /* Nos aseguramos de que no se desborde */
+  height: auto;
+  border-radius: 10px; /* Suaviza los bordes si es necesario */
+}
+
+/* Botón de Cerrar Sesión */
+.sidebar-logout {
+  margin-top: auto;
+  margin-bottom: 20px;
+}
+
+.sidebar-logout button {
+  background-color: #e81d16; /* Rojo más vibrante */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: bold;
+}
+
+.sidebar-logout button:hover {
+  background-color: #b13e3a;
+}
+
+/* Lista de opciones */
+.sidebar-list {
+  list-style: none;
+  padding: 0;
+  width: 100%;
+  text-align: center;
+}
+
+.sidebar-item {
+  background: #1B98E0; /* Azul océano */
+  padding: 14px;
+  margin: 8px 0;
+  border-radius: 8px;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  font-weight: bold;
+}
+
+.sidebar-item:hover {
+  background: #e81d16; /* Azul brillante */
+  transform: scale(1.05);
+}
+

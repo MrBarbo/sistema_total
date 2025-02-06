@@ -1,7 +1,7 @@
 /* styles/Home.css */
 
 body {
-  background: linear-gradient(to right, #ff7e5f, #feb47b);
+  background: linear-gradient(to right, #183d7b, #183d7b);
   font-family: 'Roboto', sans-serif;
   color: #333;
   margin: 0;
@@ -55,7 +55,7 @@ input {
 }
 
 input:focus {
-  border-color: #ff7e5f;
+  border-color: #183d7b;
   outline: none;
 }
 
