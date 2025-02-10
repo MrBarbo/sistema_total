@@ -1,7 +1,7 @@
 /* styles/Stock.css */
 
 .full {
-  font-family: Arial, sans-serif;
+  font-family: serif, sans-serif;
 }
 
 .content {
@@ -67,7 +67,7 @@ ul {
 }
 
 .add-product-button, .button-edit {
-  margin-top: 15px;
+  margin: top 20px;
 }
 
 .button-edit {
